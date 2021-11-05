@@ -1,6 +1,8 @@
-package com.example.demo.Thread.test2_3_1;
+package com.example.demo.Thread.test2_3_2;
 
-public class PrintString {
+import com.example.demo.Thread.test2_3_1.Run;
+
+public class PrintString implements Runnable{
     public boolean isContinuePrint() {
         return isContinuePrint;
     }
@@ -9,7 +11,7 @@ public class PrintString {
         isContinuePrint = continuePrint;
     }
 
-    private volatile boolean isContinuePrint = true;
+    private  boolean isContinuePrint = true;
 
 
 
@@ -17,10 +19,15 @@ public class PrintString {
         try{
             while (isContinuePrint){
                 System.out.println("run printStringMethod:"+ Thread.currentThread().getName());
-                Thread.sleep(10000);
+                Thread.sleep(1000);
             }
         }catch (InterruptedException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void run() {
+        printStringMethod();
     }
 }
