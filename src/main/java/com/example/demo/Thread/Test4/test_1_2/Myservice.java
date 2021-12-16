@@ -21,4 +21,20 @@ public class Myservice {
         }
 
     }
+
+
+    public void methodB(){
+        try {
+            lock.lock();
+            System.out.println("methodB begin ThreadName="+Thread.currentThread().getName()+"time="+System.currentTimeMillis());
+            Thread.sleep(5000);
+            System.out.println("methodB end ThreadName="+Thread.currentThread().getName()+"time="+System.currentTimeMillis());
+
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            lock.unlock();
+        }
+
+    }
 }
